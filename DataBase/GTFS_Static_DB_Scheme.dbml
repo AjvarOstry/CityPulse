@@ -1,0 +1,75 @@
+Table Calendar {
+  service_id varchar(12) [pk] //margines 4 znaków jakby wydłużyli numery 
+  start_date date [not null]
+  end_date date [not null]
+}
+
+Table Calendar_Dates {
+  service_id varchar(12) [not null, ref: > Calendar.service_id]
+  service_date date [not null]
+  is_running boolean [not null]
+
+  indexes {
+    (service_id, service_date) [pk]
+  }
+}
+
+Table Routes {
+  route_id varchar(4) [pk]
+  route_type Vehicles [not null]
+}
+
+enum Vehicles {
+  bus
+  tram
+}
+
+Table Shapes {
+  shape_id int [not null, ref: > Shape_Headers.shape_id] // też margines
+  shape_pt_sequence int [not null]
+  
+  shape_pt_lat double [not null]
+  shape_pt_lon double [not null]
+  // do przerobienia na postGIS
+
+  Indexes {
+    (shape_id, shape_pt_sequence) [pk]
+  }
+}
+
+Table Shape_Headers {
+  shape_id int [pk]
+}
+
+Table Stops {
+  stop_id int [pk]
+  stop_code varchar(4) [not null]
+  stop_name varchar(100) [not null]
+  stop_lat double [not null]
+  stop_lon double [not null]
+  // trzeba będzie przerobić na postGIS
+}
+
+Table Stop_Times {
+  trip_id varchar(16) [not null, ref: > Trips.trip_id]
+  arrival_time interval [not null]
+  departure_time interval
+  stop_id int [not null, ref: > Stops.stop_id]
+  stop_sequence int //nr kolejności przystanku na trasie
+
+  Indexes {
+    (trip_id, stop_sequence) [pk]
+  }
+}
+
+Table Trips {
+  trip_id varchar(16) [pk]
+  route_id varchar(4) [not null, ref: > Routes.route_id] // nie wiem jakich relacji tu użyć
+  service_id varchar(12) [not null, ref: > Calendar.service_id] // ani tu
+  trip_headsign varchar(100)
+  direction boolean [not null]
+  shape_id int [not null, ref: > Shape_Headers.shape_id]
+}
+
+
+
