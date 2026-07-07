@@ -1,7 +1,7 @@
 -- CityPulse Database creation file
 
-DROP DATABASE IF EXISTS "CityPulseDB";
-CREATE DATABASE "CityPulseDB";
+-- DROP DATABASE IF EXISTS "CityPulseDB";
+-- CREATE DATABASE "CityPulseDB";
 \c "CityPulseDB"
 
 

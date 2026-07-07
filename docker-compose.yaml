@@ -1,0 +1,20 @@
+services:
+  postgisdb: 
+    build: ./DataBase
+    shm_size: 1024mb
+    ports:
+      - 5432:5432
+    environment:
+      # login data should be in .env, it's just an educational project tho
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: CityPulseDB
+      TZ: Europe/Warsaw
+      PGTZ: Europe/Warsaw
+    volumes:
+      - postgis-data:/var/lib/postgresql
+
+volumes:
+  postgis-data:
+    driver: local
+    
