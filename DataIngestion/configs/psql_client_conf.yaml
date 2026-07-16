@@ -1,0 +1,17 @@
+db:
+  host: 'localhost'
+  port: 5432
+  db-name: 'CityPulseDB'
+  static-tables:
+    - 'Calendar'
+    - 'Calendar_Dates'
+    - 'Routes'
+    - 'Shapes'
+    - 'Stop_Times'
+    - 'Stops'
+    - 'Trips'
+    - 'Shape_Headers'
+
+client:
+  user: docker
+  password: docker # XD

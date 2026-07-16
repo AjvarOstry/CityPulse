@@ -1,0 +1,5 @@
+import:
+  static_data_path: 'https://otwarte.miasto.lodz.pl/wp-content/uploads/2025/06/GTFS.zip'
+  static_get_after: 86400
+  live_data_path: "https://cdn.zbiorkom.live/gtfs-rt/lodz.pb"
+  live_get_after: 60
