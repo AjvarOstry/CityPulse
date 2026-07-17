@@ -54,7 +54,7 @@ CREATE TABLE "Shapes" (
 -- lat i lon do przerobienia na postgis
 CREATE TABLE "Stops" (
     stop_id INT PRIMARY KEY,
-    stop_code VARCHAR(4) NOT NULL,
+    stop_code INT NOT NULL,
     stop_name VARCHAR(100) NOT NULL,
 
     stop_lat DOUBLE PRECISION NOT NULL,
