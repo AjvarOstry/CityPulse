@@ -1,5 +1,6 @@
 import pandas as pd
 from collections import OrderedDict
+from fit_data_helpers import parse_time_to_gtfs
 
 def fit_static_data(pd_dictionary):
 
@@ -99,7 +100,3 @@ def fit_static_data(pd_dictionary):
     pd_dictionary.move_to_end("Stop_Times", last=True)
 
     return pd_dictionary
-
-def parse_time_to_gtfs(time):
-    h, m, s = map(int, time.split(":"))
-    return pd.Timedelta(hours=h, minutes=m, seconds=s)
